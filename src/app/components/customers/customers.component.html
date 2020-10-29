@@ -1,0 +1,69 @@
+<h1>Listado de clientes</h1>
+<hr>
+
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/cliente/nuevo"
+                class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </button>
+    </div>
+</div>
+
+<table *ngIf="!cargando && clientes.length > 0" class="table mt-3 animated fadeIn faster">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">UUID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Email</th>
+        <th scope="col">Avatar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes; let i = index">
+          <th scope="row">{{ i+1 }}</th>
+         
+          <td>{{ cliente.UUID }}</td>
+          <td>{{ cliente.Name }}</td>
+          <td>{{ cliente.Surname }}</td>
+          <td>{{ cliente.Address }}</td>
+          <td>{{ cliente.Email }}</td>
+          <td>{{ cliente.Avatar }}</td>
+          
+          <td>
+              <button class="btn btn-info mr-1"
+                      [routerLink]="['/cliente', cliente.ID]">
+                <i class="fa fa-pen"></i>
+              </button>
+
+              <button class="btn btn-danger"
+                      (click)="borrarCliente(cliente, i)">
+                <i class="fa fa-trash"></i>
+              </button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!cargando && clientes.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+   
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+      <h4 class="alert-heading">Cargando</h4>
+      <p>
+          <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+      </p>
+      <p class="mb-0">
+          Espere por favor
+      </p>
+  </div>
+  

@@ -1,0 +1,130 @@
+<h1>Cliente <small> Nombre del Cliente</small></h1>
+<hr>
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger"
+                routerLink="/clientes">
+            <i class="fa fa-arrow-left"></i>
+            Regresar
+        </button>
+    </div>
+</div>
+
+<div class="row animated fadeIn faster">
+    <div class="col">
+        <form (ngSubmit)="guardar(f)"
+               #f = "ngForm">
+            <div class="form-group">
+                <label>ID</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="ID"
+                       [(ngModel)]="cliente.ID"
+                       name="ID">
+                <small class="form-text text-muted">Este campo es autogenerado</small>
+            </div>
+
+            <div class="form-group">
+                <label>UUID</label>
+                <input type="password"
+                       class="form-control"
+                       placeholder="UUID"
+                       [(ngModel)]="cliente.UUID"
+                       name="UUID"
+                       [class.is-invalid]="UUID.invalid && UUID.touched"
+                       required
+                       minlength="8"
+                       #UUID="ngModel">
+                       <small *ngIf="UUID.invalid && UUID.touched"
+                       class="form-text text-danger">Ingrese 8 caracteres</small>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Nombre del Cliente"
+                       [(ngModel)]="cliente.Name"
+                       name="nombre"
+                       [class.is-invalid]="nombre.invalid && nombre.touched"
+                       required
+                       minlength="4"
+                       #nombre="ngModel">
+                       <small *ngIf="nombre.invalid && nombre.touched"
+                       class="form-text text-danger">Ingrese 4 letras</small>
+                
+            </div>
+
+            <div class="form-group">
+                <label>Apellido</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Apellido del Cliente"
+                       [(ngModel)]="cliente.Surname"
+                       name="apellido"
+                       [class.is-invalid]="apellido.invalid && apellido.touched"
+                       required
+                       minlength="4"
+                       #apellido="ngModel">
+                       <small *ngIf="apellido.invalid && apellido.touched"
+                       class="form-text text-danger">Ingrese 4 letras</small>
+            </div>
+
+            <div class="form-group">
+                <label>Dirección</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Dirección del Cliente"
+                       [(ngModel)]="cliente.Address"
+                       name="direccion"
+                       [class.is-invalid]="direccion.invalid && direccion.touched"
+                       required
+                       minlength="4"
+                       #direccion="ngModel">
+                       <small *ngIf="direccion.invalid && direccion.touched"
+                       class="form-text text-danger">Ingrese 4 letras</small>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email"
+                       class="form-control"
+                       placeholder="Email del Cliente"
+                       [(ngModel)]="cliente.Email"
+                       name="Email"
+                       [class.is-invalid]="Email.invalid && Email.touched"
+                       required
+                       #Email="ngModel">
+                       <small *ngIf="Email.invalid && Email.touched"
+                       class="form-text text-danger">Ingrese un Email válido</small>
+            </div>
+
+
+            
+
+           
+
+
+
+
+            
+
+            
+
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit"
+                        class="btn btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+
